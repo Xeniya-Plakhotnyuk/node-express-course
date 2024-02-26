@@ -1,29 +1,31 @@
-const { readFile, writeFile } = require('fs')
+const { writeFile } = require("fs");
+console.log("at start");
 
-console.log('start')
-readFile('./content/first.txt', 'utf8', (err, result) => {
+writeFile("./temporary/fileB.txt", "This is line 1\n", (err, result) => {
+  console.log("First line written to file");
+
   if (err) {
-    console.log(err)
-    return
-  }
-  const first = result
-  readFile('./content/second.txt', 'utf8', (err, result) => {
-    if (err) {
-      console.log(err)
-      return
-    }
-    const second = result
-    writeFile(
-      './content/result-async.txt',
-      `Here is the result : ${first}, ${second}`,
-      (err, result) => {
-        if (err) {
-          console.log(err)
-          return
-        }
-        console.log('task async done!')
+    console.log("This error happened: ", err);
+  } else {
+       writeFile("./temporary/fileB.txt", "This is line 2\n", { flag: 'a' }, (err, result) => {
+      console.log("Second line written to file");
+
+      if (err) {
+        console.log("This error happened: ", err);
+      } else {
+               writeFile("./temporary/fileB.txt", "This is line 3\n", { flag: 'a' }, (err, result) => {
+          console.log("Third line written to file");
+
+          if (err) {
+            console.log("This error happened: ", err);
+          } else {
+            console.log("All lines written successfully!");
+          }
+        });
       }
-    )
-  })
-})
-console.log(`Let's go further!`)
+    });
+  }
+});
+
+console.log("at end");
+

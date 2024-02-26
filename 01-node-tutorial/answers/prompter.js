@@ -103,6 +103,7 @@ const server = http.createServer((req, res) => {
           else {
           color = "white";
         }
+        else if
         // Your code changes would end here
         res.writeHead(303, {
           Location: "/",

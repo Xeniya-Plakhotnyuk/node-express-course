@@ -1,12 +1,28 @@
+const filePath = './temporary/fileA.txt'
+const firstLine = "First Line\n"
+const secondLine = "Second Line\n"
+const thirdLine = "Third Line\n"
 const {readFileSync, writeFileSync} = require('fs')
 console.log('start')
-const first = readFileSync('./content/first.txt', 'utf8')
-const second = readFileSync('./content/second.txt', 'utf8')
 
 writeFileSync(
-  './content/result-sync.txt',
-  `${first}, ${second}`,
+  filePath,
+  firstLine,
+  { flag: 'w' }
+)
+
+writeFileSync(
+  filePath,
+  secondLine,
   { flag: 'a' }
 )
-console.log('ready with that task!!!')
-console.log('heading to the next one!!!')
+
+writeFileSync(
+  filePath,
+  thirdLine,
+  { flag: 'a' }
+)
+
+const fileContents = readFileSync(filePath, 'utf8');
+
+console.log(fileContents)
