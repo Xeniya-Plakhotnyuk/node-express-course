@@ -27,5 +27,7 @@ writeFile("./temporary/fileB.txt", "This is line 1\n", (err, result) => {
   }
 });
 
+// if (err) throw err;
+
 console.log("at end");
 
