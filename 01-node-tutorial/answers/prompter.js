@@ -73,6 +73,7 @@ let color = "Pick your color!";
 const form = () => {
   return `
   <body style="background-color: ${color}">
+  <h2>Pick the color you like!</h2>
   <p>${color}</p>
   <form method="POST">
   <select name="color">
@@ -100,19 +101,23 @@ const server = http.createServer((req, res) => {
         if (body["color"]) {
           color = body["color"];
         }         
-          else {
-          color = "white";
+          else  {
+          color = "white"
         }
-        else if
-        // Your code changes would end here
+               // Your code changes would end here
         res.writeHead(303, {
           Location: "/",
-        });
+        })
         res.end();
-      });
+      })
     } else {
-      res.end(form());
+      res.end(form())
     }
   });
-server.listen(3000);
+
+  server.on("request", (req) => {  
+    console.log("event received: ", req.method, req.url);  
+  });  
+
+  server.listen(3000);
 console.log("The server is listening on port 3000.");
