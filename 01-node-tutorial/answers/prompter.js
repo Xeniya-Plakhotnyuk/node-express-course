@@ -21,44 +21,98 @@ const getBody = (req, callback) => {
 };
 
 // here, you could declare one or more variables to store what comes back from the form.
-let item = "Enter something below.";
+// let item = "Enter your name below.";
+// let course = "Enter what course you take with CTD!"
 
 // here, you can change the form below to modify the input fields and what is displayed.
 // This is just ordinary html with string interpolation.
+// const form = () => {
+//   return `
+//   <body>
+//   <p>${item}</p>
+//   <form method="POST">
+//   <input name="item" placeholder="What is your name?"></input>
+//   <p>${course}</p>
+//   <input name="course" placeholder="Enter your CTD course"></input>
+//   <button type="submit">Submit</button>
+//   </form>
+//   </body>
+//   `;
+// };
+
+// const server = http.createServer((req, res) => {
+//   console.log("req.method is ", req.method);
+//   console.log("req.url is ", req.url);
+//   if (req.method === "POST") {
+//     getBody(req, (body) => {
+//       console.log("The body of the post is ", body);
+//       // here, you can add your own logic
+//       if (body["item"]) {
+//         item = body["item"];
+//       } else if(body["course"]){
+//         course = body["course"];
+//       }
+//         else {
+//         item = "Nothing was entered.";
+//       }
+//       // Your code changes would end here
+//       res.writeHead(303, {
+//         Location: "/",
+//       });
+//       res.end();
+//     });
+//   } else {
+//     res.end(form());
+//   }
+// });
+
+
+
+let color = "Pick your color!";
+
 const form = () => {
   return `
-  <body>
-  <p>${item}</p>
+  <body style="background-color: ${color}">
+  <p>${color}</p>
   <form method="POST">
-  <input name="item"></input>
+  <select name="color">
+  <option value="white">White</option>
+  <option value="red">Red</option>
+  <option value="green">Green</option>
+  <option value="blue">Blue</option>
+  <option value="yellow">Yellow</option>
+  <option value="pink">Pink</option>
+  </select>
   <button type="submit">Submit</button>
   </form>
   </body>
   `;
 };
 
-const server = http.createServer((req, res) => {
-  console.log("req.method is ", req.method);
-  console.log("req.url is ", req.url);
-  if (req.method === "POST") {
-    getBody(req, (body) => {
-      console.log("The body of the post is ", body);
-      // here, you can add your own logic
-      if (body["item"]) {
-        item = body["item"];
-      } else {
-        item = "Nothing was entered.";
-      }
-      // Your code changes would end here
-      res.writeHead(303, {
-        Location: "/",
-      });
-      res.end();
-    });
-  } else {
-    res.end(form());
-  }
-});
 
+const server = http.createServer((req, res) => {
+    console.log("req.method is ", req.method);
+    console.log("req.url is ", req.url);
+    if (req.method === "POST") {
+      getBody(req, (body) => {
+        console.log("The body of the post is ", body);
+        // here, you can add your own logic
+        if (body["color"]) {
+          color = body["color"];
+        }         
+          else {
+          color = "white";
+        }
+        else if
+        // Your code changes would end here
+        res.writeHead(303, {
+          Location: "/",
+        });
+        res.end();
+      });
+    } else {
+      res.end(form());
+    }
+  });
 server.listen(3000);
 console.log("The server is listening on port 3000.");
