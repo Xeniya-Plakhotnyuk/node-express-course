@@ -1,4 +1,12 @@
-console.log('Express Tutorial')
+
+const { products } = require("./data");
+const express = require('express')
+const app = express()
+
+
+app.use(express.static("./public"))
+
+
 const { products } = require("./data");
 const express = require('express')
 const app = express()
@@ -42,6 +50,7 @@ app.use(express.json())
 // Week4 People Router
 
 app.use('/api/v1/people', people)
+
 
 
 app.get('/api/v1/test',(req, res) =>{
@@ -105,3 +114,4 @@ app.all('*', (req, res) =>{
 app.listen(3000, () =>{
     console.log('My server is on port 3000...')
 })
+
