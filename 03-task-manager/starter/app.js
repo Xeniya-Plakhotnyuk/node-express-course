@@ -29,9 +29,13 @@ mongoose
 .then(() => console.log(`We are CONNECTED!`))
 .catch((err) => console.log(err))
 
-// app.use(router)
+
+app.listen(PORT, ()=>{
+    console.log(`Sever listening on port ${PORT}`)
+})
 
 
 app.listen(PORT, ()=>{
     console.log(`Sever listening on port ${PORT}`)
 })
+
