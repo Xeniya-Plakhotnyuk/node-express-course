@@ -33,3 +33,9 @@ mongoose
 app.listen(PORT, ()=>{
     console.log(`Sever listening on port ${PORT}`)
 })
+
+
+app.listen(PORT, ()=>{
+    console.log(`Sever listening on port ${PORT}`)
+})
+
