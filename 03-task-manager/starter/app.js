@@ -50,3 +50,9 @@ const start = async () => {
 
 //   for Postman:   http://localhost:7000/api/v1/tasks
 
+
+app.listen(PORT, ()=>{
+    console.log(`Sever listening on port ${PORT}`)
+})
+
+
